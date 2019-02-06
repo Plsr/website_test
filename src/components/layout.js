@@ -6,7 +6,7 @@ import GlobalStyles from './GlobalStyles'
 
 class Layout extends React.PureComponent {
   render() {
-    const children = this.props
+    const { children } = this.props
 
     return (
       <ThemeProvider theme={theme}>
