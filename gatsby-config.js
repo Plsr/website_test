@@ -14,6 +14,13 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/posts`
+      }
+    },
+    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
@@ -22,6 +29,7 @@ module.exports = {
       }
     },
     `gatsby-transformer-sharp`,
+    `gatsby-transformer-remark`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
