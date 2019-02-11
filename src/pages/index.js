@@ -5,10 +5,12 @@ import Header from '../components/Header'
 import Layout from '../components/layout'
 import Image from '../components/image'
 import SEO from '../components/seo'
+import RecentArticlesList from '../components/RecentArticlesList'
 
 const IndexPage = () => (
   <Layout>
     <Header />
+    <RecentArticlesList />
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
