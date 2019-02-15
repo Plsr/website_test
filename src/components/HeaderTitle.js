@@ -12,7 +12,7 @@ HeaderTitle.propTypes = {
 }
 
 const Text = styled('h2')`
-  font-size: 24px;
+  font-size: ${props => props.theme.fontSizes.large};
   font-weight: ${props => (props.isBold ? '600' : '400')};
   color: ${props => props.theme.colors.black};
 `

@@ -37,7 +37,7 @@ class Header extends React.PureComponent {
 }
 
 const Paragraph = styled('p')`
-  font-size: 18px;
+  font-size: ${props => props.theme.fontSizes.regular};
   color: ${props => props.theme.colors.black};
   margin-bottom: 20px;
 `

@@ -8,6 +8,11 @@ class GlobalStyles extends PureComponent {
         styles={css`
           * {
             font-family: 'Zilla Slab', serif;
+            font-size: 18px;
+          }
+          body {
+            padding: 0;
+            margin: 0;
           }
         `}
       />
