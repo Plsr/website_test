@@ -19,6 +19,7 @@ const List = ({ data }) => {
                   title={article.node.frontmatter.title}
                   date={article.node.frontmatter.date}
                   excerpt={article.node.excerpt}
+                  slug={article.node.fields.slug}
                 />
               </div>
             ))}
@@ -40,11 +41,14 @@ const RecentArticlesList = props => (
         ) {
           edges {
             node {
-              id
               frontmatter {
                 title
                 date(formatString: "DD MMMM, YYYY")
               }
+              fields {
+                slug
+              }
+              id
               excerpt
             }
           }
