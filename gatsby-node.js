@@ -7,6 +7,7 @@
 // You can delete this file if you're not using it
 const { createFilePath } = require('gatsby-source-filesystem')
 const path = require('path')
+const createPaginatedPages = require('gatsby-paginate')
 
 // Add slugs to markdown nodes
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -34,12 +35,25 @@ exports.createPages = ({ graphql, actions }) => {
               fields {
                 slug
               }
+              frontmatter {
+                title
+                date
+              }
             }
           }
         }
       }
     `
   ).then(result => {
+    createPaginatedPages({
+      edges: result.data.allMarkdownRemark.edges,
+      createPage: createPage,
+      pageTemplate: 'src/templates/ArticlesIndex.js',
+      pageLength: 5,
+      pathPrefix: 'articles',
+      buildPath: (index, pathPrefix) =>
+        index > 1 ? `${pathPrefix}/${index}` : `/${pathPrefix}` // This is optional and this is the default
+    })
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       createPage({
         path: node.fields.slug,
