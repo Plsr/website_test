@@ -49,10 +49,8 @@ exports.createPages = ({ graphql, actions }) => {
       edges: result.data.allMarkdownRemark.edges,
       createPage: createPage,
       pageTemplate: 'src/templates/ArticlesIndex.js',
-      pageLength: 5,
-      pathPrefix: 'articles',
-      buildPath: (index, pathPrefix) =>
-        index > 1 ? `${pathPrefix}/${index}` : `/${pathPrefix}` // This is optional and this is the default
+      pageLength: 20,
+      pathPrefix: 'articles'
     })
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       createPage({
