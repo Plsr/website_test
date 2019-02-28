@@ -39,6 +39,8 @@ exports.createPages = ({ graphql, actions }) => {
                 title
                 date
               }
+              excerpt
+              id
             }
           }
         }

@@ -1,5 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
+import Wrapper from '../components/Wrapper'
+import Layout from '../components/layout'
+import ArticlesList from '../components/ArticlesList'
 
 const NavLink = props => {
   if (!props.test) {
@@ -10,32 +14,31 @@ const NavLink = props => {
 }
 
 const IndexPage = ({ pageContext }) => {
-  console.log(pageContext)
   const { group, index, first, last, pageCount, pathPrefix } = pageContext
   const previousUrl =
     index - 1 == 1 ? pathPrefix : `${pathPrefix}/${(index - 1).toString()}`
   const nextUrl = `${pathPrefix}/${(index + 1).toString()}`
 
   return (
-    <div>
-      <h4>{pageCount} Pages</h4>
-
-      {group.map(({ node }) => (
-        <div key={node.id} className="blogListing">
-          <div className="date">{node.frontmatter.date}</div>
-          <Link className="blogUrl" to={node.fields.slug}>
-            {node.frontmatter.title}
-          </Link>
-          <div>{node.excerpt}</div>
+    <Layout>
+      <Wrapper>
+        <ArticlesList articles={group} />
+        <div className="previousLink">
+          <NavLink test={first} url={previousUrl} text="Go to Previous Page" />
         </div>
-      ))}
-      <div className="previousLink">
-        <NavLink test={first} url={previousUrl} text="Go to Previous Page" />
-      </div>
-      <div className="nextLink">
-        <NavLink test={last} url={nextUrl} text="Go to Next Page" />
-      </div>
-    </div>
+        <span>
+          Page {index} of {pageCount}
+        </span>
+        <div className="nextLink">
+          <NavLink test={last} url={nextUrl} text="Go to Next Page" />
+        </div>
+      </Wrapper>
+    </Layout>
   )
 }
+
+IndexPage.propTypes = {
+  pageContext: PropTypes.object.isRequired
+}
+
 export default IndexPage
