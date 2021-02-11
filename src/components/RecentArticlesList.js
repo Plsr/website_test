@@ -4,6 +4,7 @@ import { graphql, StaticQuery } from 'gatsby'
 import styled from '@emotion/styled'
 import Wrapper from './Wrapper'
 import RecentArticle from './RecentArticle'
+import { PrimaryHeadline } from './Typography'
 
 // The actual list rendering the content
 const List = ({ data }) => {
@@ -11,7 +12,7 @@ const List = ({ data }) => {
     <Background>
       <Wrapper>
         <Content>
-          <Title>Recent Articles</Title>
+          <PrimaryHeadline>Recent Articles</PrimaryHeadline>
           <div>
             {data.allMarkdownRemark.edges.map(article => (
               <div key={article.node.id}>
@@ -65,15 +66,6 @@ const Background = styled('div')`
 
 const Content = styled('div')`
   padding: 80px 0;
-`
-
-const Title = styled('h3')`
-  display: inline-block;
-  font-size: ${props => props.theme.fontSizes.large};
-  padding: 0 10px;
-  margin-top: 0;
-  background-size: 2px 1em;
-  box-shadow: inset 0 -0.4em ${props => props.theme.colors.accentTwo};
 `
 
 List.propTypes = {
